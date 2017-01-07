@@ -1,5 +1,5 @@
 /**
- * Google Chrome Browser extension | Notify by Script Condition
+ * Notify by Script Condition Google Chrome Browser extension.
  *
  * @author Ufuk Uzun
  */
@@ -48,7 +48,7 @@ function notify(title, message) {
     chrome.notifications.create("notify-by-condition", {
         "type": "basic",
         "title": title,
-        "iconUrl": "https://cdn2.iconfinder.com/data/icons/business-office-6/100/f8-01-512.png",
+        "iconUrl": "https://raw.githubusercontent.com/ufuk/notify-by-script-condition/master/icon.png",
         "message": message
     });
 };
