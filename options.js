@@ -17,11 +17,17 @@ function saveOptions() {
         // Saved
         console.log("Options saved.");
 
+        // Show 'saved' message
         var $statusLabel = $('#saveStatusLabel');
         $statusLabel.text('Options saved.');
         setTimeout(function () {
             $statusLabel.text('');
         }, 750);
+
+        // Send message to refresh alarm
+        chrome.runtime.sendMessage({message: "newOptionsSaved"}, function (response) {
+            console.log(response.message);
+        });
     });
 }
 
