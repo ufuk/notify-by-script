@@ -18,7 +18,12 @@
     "http://*/*",
     "https://*/*",
     "alarms",
-    "notifications"
+    "notifications",
+    "storage"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }

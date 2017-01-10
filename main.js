@@ -1,9 +1,3 @@
-/**
- * Notify by Script Condition Google Chrome Browser extension.
- *
- * @author Ufuk Uzun
- */
-
 // Create alarm
 // Documentation for "chrome.alarms": https://developer.chrome.com/extensions/alarms
 chrome.alarms.create("USD_TO_TRY_FX_RATE", {periodInMinutes: 5});
