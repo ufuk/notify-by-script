@@ -5,7 +5,7 @@ function saveOptions() {
     var $activated = activatedInput();
 
     var newOptions = {
-        period: $period.val(),
+        period: parseInt($period.val()),
         script: $script.val(),
         activated: $activated.prop('checked')
     };
