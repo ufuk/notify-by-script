@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Test Extension Options</title>
+    <title>Notify by Script Condition Extension Options</title>
     <style>
         body {
-            padding: 10px;
+            padding: 15px;
+            padding-top: 0;
+        }
+
+        h1 {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        div {
+            float: left;
+            padding-bottom: 10px;
+        }
+
+        .fullWidth {
+            width: 100%;
+        }
+
+        .halfWidth {
+            width: 50%;
+        }
+
+        label {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-<div>
-    <label>Favorite color:</label>
-    <select id="color">
-        <option value="red">red</option>
-        <option value="green">green</option>
-        <option value="blue">blue</option>
-        <option value="yellow">yellow</option>
-    </select>
+<h1>Set Alarm Options</h1>
+<div class="fullWidth">
+    <label>Period (in minutes):</label>
+</div>
+<div class="fullWidth">
+    <input type="number" name="period" style="width: 15%; text-align: right;"/>
 </div>
 
-<div>
+<div class="fullWidth">
+    <label>Script:</label>
+</div>
+<div class="fullWidth">
+    <textarea name="script" class="fullWidth" rows="10" style="resize: none"></textarea>
+</div>
+
+<div class="fullWidth">
     <label>
-        <input type="checkbox" id="like">
-        I like colors.
+        <input type="checkbox" name="activated">
+        Activated?
     </label>
 </div>
 
-<div id="status"></div>
-
-<div>
+<div class="fullWidth">
     <button id="save">Save</button>
+    <label id="saveStatusLabel" style="color: #3c763d;"></label>
 </div>
 
+<script src="jquery.min.js"></script>
 <script src="options.js"></script>
 </body>
 </html>

@@ -1,39 +1,64 @@
-console.log("deneme 0");
+// Saves options to chrome.storage.
+function saveOptions() {
+    var $period = periodInput();
+    var $script = scriptInput();
+    var $activated = activatedInput();
 
-// Saves options to chrome.storage.sync.
-function save_options() {
-    console.log("deneme 1");
-    var color = document.getElementById('color').value;
-    var likesColor = document.getElementById('like').checked;
-    chrome.storage.sync.set({
-        favoriteColor: color,
-        likesColor: likesColor
-    }, function () {
-        console.log("deneme 2");
-        // Update status to let user know options were saved.
-        var status = document.getElementById('status');
-        status.textContent = 'Options saved.';
+    var newOptions = {
+        period: $period.val(),
+        script: $script.val(),
+        activated: $activated.prop('checked')
+    };
+
+    console.log("Options saving: ");
+    console.log(newOptions);
+
+    chrome.storage.sync.set(newOptions, function () {
+        // Saved
+        console.log("Options saved.");
+
+        var $statusLabel = $('#saveStatusLabel');
+        $statusLabel.text('Options saved.');
         setTimeout(function () {
-            status.textContent = '';
+            $statusLabel.text('');
         }, 750);
     });
-    console.log("deneme 3");
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
-    console.log("deneme 4");
-    // Use default value color = 'red' and likesColor = true.
+// Restores settings using the stored data in chrome.storage.
+function restoreOptions() {
+    var $period = periodInput();
+    var $script = scriptInput();
+    var $activated = activatedInput();
+
+    console.log("Options restoring...");
     chrome.storage.sync.get({
-        favoriteColor: 'red',
-        likesColor: true
-    }, function (items) {
-        console.log("deneme 1");
-        document.getElementById('color').value = items.favoriteColor;
-        document.getElementById('like').checked = items.likesColor;
+        period: 5,
+        script: '',
+        activated: false
+    }, function (options) {
+        $period.val(options.period);
+        $script.val(options.script);
+        $activated.prop('checked', options.activated);
+
+        console.log("Options restored: ");
+        console.log(options);
     });
 }
 
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click', save_options);
+// Set event bindings
+document.addEventListener('DOMContentLoaded', restoreOptions);
+document.getElementById('save').addEventListener('click', saveOptions);
+
+// Helper methods
+function periodInput() {
+    return $('input[name="period"]');
+}
+
+function scriptInput() {
+    return $('textarea[name="script"]');
+}
+
+function activatedInput() {
+    return $('input[name="activated"]');
+}
