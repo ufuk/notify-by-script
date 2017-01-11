@@ -1,12 +1,6 @@
 Notify by Script Condition
-===================
+==========================
 
-... extension for Google Chrome browser.
+Google Chrome Browser extension for setting alarms/notifications that triggered by script conditions.
 
-Now available on [Chrome Web Store](https://github.com/ufuk/notify-by-script-condition)
-
-=========
-
-Google Chrome için ... uzantısı.
-
-Notify by Script Condition artık [Chrome Web Mağazası'nda](https://github.com/ufuk/notify-by-script-condition)
+Now available on [Chrome Web Store](https://chrome.google.com/webstore/detail/notify-by-script-conditio/idgiodaooapkmmipoahlcmggofokcilg)
