@@ -26,7 +26,7 @@ chrome.alarms.onAlarm.addListener(function (alarm) {
 
 // Documentation for "chrome.notifications": https://developer.chrome.com/extensions/notifications
 function notify(title, message) {
-    chrome.notifications.create("notify-by-script-condition", {
+    chrome.notifications.create("notify-by-script-condition-" + new Date().getTime(), {
         "type": "basic",
         "title": title,
         "iconUrl": "https://raw.githubusercontent.com/ufuk/notify-by-script-condition/master/icon.png",
@@ -46,6 +46,7 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+// Get alarm options from Chrome Storage API
 function getAlarmOptions(callback) {
     console.log("Getting options...");
     chrome.storage.sync.get({
