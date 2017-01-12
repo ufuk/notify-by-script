@@ -2,6 +2,10 @@
 // Documentation for "chrome.alarms": https://developer.chrome.com/extensions/alarms
 function createAlarm() {
     getAlarmOptions(function (options) {
+        chrome.alarms.clearAll(function () {
+            console.log("Alarms cleared.");
+        });
+
         if (options && options.activated) {
             chrome.alarms.create("notify-by-script-condition", {periodInMinutes: options.period});
         }
