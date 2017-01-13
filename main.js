@@ -18,15 +18,7 @@ createAlarm();
 chrome.alarms.onAlarm.addListener(function (alarm) {
     console.log("Alarm triggered: " + alarm.name);
 
-    getAlarmOptions(function (options) {
-        if (options && options.activated) {
-            var result = eval(options.script);
-
-            if (result != undefined) {
-                notify(alarm.name, result.title, result.message);
-            }
-        }
-    });
+    executeAlarm(alarm.name);
 });
 
 // Documentation for "chrome.notifications": https://developer.chrome.com/extensions/notifications
@@ -84,3 +76,23 @@ function getAlarmOptions(callback) {
         callback(options);
     });
 }
+
+// Get alarm options, evaluate and notify
+function executeAlarm(alarmName) {
+    getAlarmOptions(function (options) {
+        if (options && options.activated) {
+            var result = eval(options.script);
+
+            if (result != undefined) {
+                notify(alarmName, result.title, result.message);
+            }
+        }
+    });
+}
+
+// Execute alarm when browser action clicked
+chrome.browserAction.onClicked.addListener(function (tab) {
+    console.log("Browser action clicked.");
+
+    executeAlarm("test");
+});
