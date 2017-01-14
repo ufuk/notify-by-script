@@ -53,7 +53,7 @@ function notify(alarmName, title, message) {
     });
 }
 
-// New options listener
+// Options page messages listener
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         console.log("Message received: " + request.message);
@@ -61,6 +61,9 @@ chrome.runtime.onMessage.addListener(
         if (request.message == "newOptionsSaved") {
             createAlarm();
             sendResponse({message: "alarmsReCreated"});
+        } else if (request.message == "testScript") {
+            executeAlarmWithOptions(request.alarmOptions, "test-script");
+            sendResponse({message: "scriptEvaluated"});
         }
     }
 );
@@ -80,19 +83,26 @@ function getAlarmOptions(callback) {
 // Get alarm options, evaluate and notify
 function executeAlarm(alarmName) {
     getAlarmOptions(function (options) {
-        if (options && options.activated) {
-            var result = eval(options.script);
-
-            if (result != undefined) {
-                notify(alarmName, result.title, result.message);
-            }
-        }
+        executeAlarmWithOptions(options, alarmName);
     });
+}
+
+function executeAlarmWithOptions(alarmOptions, alarmName) {
+    if (alarmOptions && alarmOptions.activated) {
+        var result = eval(alarmOptions.script);
+
+        if (result != undefined) {
+            notify(alarmName, result.title, result.message);
+        }
+    }
 }
 
 // Execute alarm when browser action clicked
 chrome.browserAction.onClicked.addListener(function (tab) {
     console.log("Browser action clicked.");
 
-    executeAlarm("test");
+    getAlarmOptions(function (options) {
+        options.activated = true;
+        executeAlarmWithOptions(options, "run-with-browser-action");
+    });
 });
