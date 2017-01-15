@@ -14,7 +14,7 @@ function createAlarm() {
             console.log("Alarms cleared.");
 
             if (options && options.activated) {
-                chrome.alarms.create("notify-by-script-condition", {periodInMinutes: options.period});
+                chrome.alarms.create("notify-by-script", {periodInMinutes: options.period});
                 console.log("Alarms created.");
             }
         });
@@ -53,7 +53,7 @@ function notify(alarmName, title, message) {
         chrome.notifications.create(notificationId, {
             "type": "basic",
             "title": title,
-            "iconUrl": "https://raw.githubusercontent.com/ufuk/notify-by-script-condition/master/icon.png",
+            "iconUrl": "https://raw.githubusercontent.com/ufuk/notify-by-script/master/icon.png",
             "message": message
         }, function () {
             console.log("Notification created: " + notificationId);

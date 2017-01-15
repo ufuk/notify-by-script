@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 2,
-  "name": "Notify by Script Condition",
-  "description": "Google Chrome Browser extension for setting alarms/notifications that triggered by script conditions.",
+  "name": "Notify by Script",
+  "description": "Extension for setting notifications that prepared by scripts.",
   "version": "1.0.2",
   "author": "Ufuk Uzun",
   "icons": {
