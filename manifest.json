@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Notify by Script",
   "description": "Extension for setting notifications that prepared by scripts.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Ufuk Uzun",
   "icons": {
     "128": "icon-128.png",
