@@ -1,3 +1,12 @@
+// Defaults
+const DEFAULT_SCRIPT =
+    "(function () {\n" +
+    "    return {\n" +
+    "        title: 'Hello World',\n" +
+    "        message: 'Notify by Script is here to allow you setting custom notifications.'\n" +
+    "    };\n" +
+    "})()";
+
 // Saves options to chrome.storage.
 function saveOptions() {
     var newOptions = extractOptionsFromInputs();
@@ -29,8 +38,8 @@ function restoreOptions() {
     console.log("Options restoring...");
     chrome.storage.sync.get({
         period: 5,
-        script: '',
-        activated: true
+        script: DEFAULT_SCRIPT,
+        activated: false
     }, function (options) {
         $period.val(options.period);
         $script.val(options.script);
