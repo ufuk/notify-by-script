@@ -30,7 +30,7 @@ function restoreOptions() {
     chrome.storage.sync.get({
         period: 5,
         script: '',
-        activated: false
+        activated: true
     }, function (options) {
         $period.val(options.period);
         $script.val(options.script);
