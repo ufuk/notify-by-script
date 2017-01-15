@@ -4,8 +4,7 @@
     <title>Notify by Script Condition Extension Options</title>
     <style>
         body {
-            padding: 15px;
-            padding-top: 0;
+            padding: 0 15px 15px;
         }
 
         h1 {
@@ -22,12 +21,12 @@
             width: 100%;
         }
 
-        .halfWidth {
-            width: 50%;
-        }
-
         label {
             font-weight: bold;
+        }
+
+        textarea {
+            font-family: 'DejaVu Sans Mono', monospace;
         }
     </style>
 </head>
@@ -45,7 +44,9 @@
     <label>Script:</label>
 </div>
 <div class="fullWidth">
-    <textarea name="script" class="fullWidth" rows="10" style="resize: none"></textarea>
+    <textarea id="editor" name="script" class="fullWidth"
+              rows="10" style="resize: none" wrap="off"
+              spellcheck="false"></textarea>
 </div>
 
 <div class="fullWidth">
