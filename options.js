@@ -3,7 +3,7 @@ const DEFAULT_SCRIPT =
     "(function () {\n" +
     "    return {\n" +
     "        title: 'Hello World',\n" +
-    "        message: 'Notify by Script is here to allow you setting custom notifications.'\n" +
+    "        message: 'Notify by Script is here to allow you setting alarms with custom notifications.'\n" +
     "    };\n" +
     "})()";
 
