@@ -1,7 +1,7 @@
 // When extension installed, open options page at once
 chrome.runtime.onInstalled.addListener(function () {
     console.log("Extension installed.");
-    chrome.runtime.openOptionsPage(function() {
+    chrome.runtime.openOptionsPage(function () {
         console.log("Options page opened.");
     });
 });
@@ -53,7 +53,7 @@ function notify(alarmName, title, message) {
         chrome.notifications.create(notificationId, {
             "type": "basic",
             "title": title,
-            "iconUrl": "https://raw.githubusercontent.com/ufuk/notify-by-script/master/icon.png",
+            "iconUrl": chrome.extension.getURL("icon.png"),
             "message": message
         }, function () {
             console.log("Notification created: " + notificationId);
