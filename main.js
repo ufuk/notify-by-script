@@ -1,3 +1,11 @@
+// When extension installed, open options page at once
+chrome.runtime.onInstalled.addListener(function () {
+    console.log("Extension installed.");
+    chrome.runtime.openOptionsPage(function() {
+        console.log("Options page opened.");
+    });
+});
+
 // Create alarm
 // Documentation for "chrome.alarms": https://developer.chrome.com/extensions/alarms
 function createAlarm() {
