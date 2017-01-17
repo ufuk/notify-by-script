@@ -1,6 +1,105 @@
-Notify by Script
-================
+# Notify by Script
 
 Google Chrome Browser extension for setting notifications that prepared by scripts.
 
 Now available on [Chrome Web Store](https://chrome.google.com/webstore/detail/notify-by-script/idgiodaooapkmmipoahlcmggofokcilg)
+
+![options-page](https://raw.githubusercontent.com/ufuk/notify-by-script/master/document-assets/options-page.png)
+
+## Use Cases
+
+You can create alarms and notifications about anything you need. Here is some examples:
+
+### Health check
+
+Write a script to check your website/service is available or not.
+
+```
+// Check health of your website or service
+(function () {
+    var response = $.ajax({
+        type: 'GET',
+        url: '<YOUR_WEBSITE_URL>',
+        async: false
+    });
+    return {
+        title: 'Health Check',
+        message: 'Status: ' + response.status
+    };
+})()
+```
+
+### Get some web content, then parse and notify
+
+For example checks some currency's exchange rate and notify.
+
+```
+// Checks USD/TRY exchange rate from doviz.com
+(function () {
+    var responseText = $.ajax({
+        type: 'GET',
+        url: 'https://www.doviz.com',
+        async: false
+    }).responseText;
+    var rate = $($($.parseHTML(responseText)).find('.menu-row2')[1]).text();
+    return {
+        title: 'USD/TRY',
+        message: rate
+    };
+})()
+```
+
+### Remind yourself to drink water
+
+You should drink at least 2 litres water everyday. So, make Notify by Script to remind you while you surfing.
+
+```
+// Remind yourself to drink water
+(function () {
+    return {
+        title: 'Wassup Healthy',
+        message: 'One more cup of water?'
+    };
+})()
+```
+
+## Scripting
+
+### Preparing notification content
+
+Notify by Script waits in hope a script that results with a JSON object which contains two fields: `title` and `message`.
+This values will be used for creating notifications for you.
+
+```
+(function () {
+    return {
+        title: 'Hello World',
+        message: 'Notify by Script is here to allow you setting alarms with custom notifications.'
+    };
+})()
+```
+
+![example-notification](https://raw.githubusercontent.com/ufuk/notify-by-script/master/document-assets/example-notification.png)
+
+### Conditional notification
+
+Return something `undefined` or "nothing" if you don't want to display notification for that cycle.
+For example, in health check use case, when you want to display notification if only status is not 200 (OK). 
+
+
+```
+(function () {
+    var response = $.ajax({
+        type: 'GET',
+        url: '<YOUR_WEBSITE_URL>',
+        async: false
+    });
+    
+    if (response.status != 200) {
+        return {
+            title: 'Health Check',
+            message: 'Something is wrong! Status: ' + response.status
+        };
+    }
+})()
+```
