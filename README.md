@@ -31,7 +31,7 @@ Write a script to check your website/service is available or not.
 
 ### Get some web content, then parse and notify
 
-For example checks some currency's exchange rate and notify.
+For example checks some currency's exchange rate and notify:
 
 ```
 // Checks USD/TRY exchange rate from doviz.com
@@ -51,7 +51,7 @@ For example checks some currency's exchange rate and notify.
 
 ### Remind yourself to drink water
 
-You should drink at least 2 litres water everyday. So, make Notify by Script to remind you while you surfing.
+You should drink at least 2 litres water everyday. So, make Notify by Script to remind you while you surfing:
 
 ```
 // Remind yourself to drink water
@@ -68,7 +68,7 @@ You should drink at least 2 litres water everyday. So, make Notify by Script to 
 ### Preparing notification content
 
 Notify by Script waits in hope a script that results with a JSON object which contains two fields: `title` and `message`.
-This values will be used for creating notifications for you.
+These values will be used for creating notifications for you.
 
 ```
 (function () {
@@ -84,8 +84,7 @@ This values will be used for creating notifications for you.
 ### Conditional notification
 
 Return something `undefined` or "nothing" if you don't want to display notification for that cycle.
-For example, in health check use case, when you want to display notification if only status is not 200 (OK). 
-
+For example, in health check use case, when you want to display notification if only status is not 200 (OK), return nothing id status is not 200 (OK): 
 
 ```
 (function () {
