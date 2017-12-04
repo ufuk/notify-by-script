@@ -49,6 +49,22 @@ For example checks some currency's exchange rate and notify:
 })()
 ```
 
+```
+// Checks BTC/TRY exchange rate from btcturk.com
+(function () {
+    var responseText = $.ajax({
+        type: 'GET',
+        url: 'https://www.btcturk.com/',
+        async: false
+    }).responseText;
+    var rate = $($($.parseHTML(responseText)).find('.topBarDailyPrice .askPrice')).text().trim();
+    return {
+        title: 'BTC/TRY',
+        message: rate
+    };
+})()
+```
+
 ### Remind yourself to drink water
 
 You should drink at least 2 litres water everyday. So, make Notify by Script to remind you while you surfing:
