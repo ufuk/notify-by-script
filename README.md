@@ -50,17 +50,19 @@ For example checks some currency's exchange rate and notify:
 ```
 
 ```
-// Checks BTC/TRY exchange rate from btcturk.com
+// Checks BTC/TRY or ETH/TRY exchange rate from btcturk.com
 (function () {
     var responseText = $.ajax({
         type: 'GET',
         url: 'https://www.btcturk.com/',
         async: false
     }).responseText;
-    var rate = $($($.parseHTML(responseText)).find('.topBarDailyPrice .askPrice')).text().trim();
+    var $parsedResponse = $($.parseHTML(responseText));
+    var rate = $($parsedResponse.find('.topBarDailyPrice .askPrice')).text().trim();
+    var title = $($parsedResponse.find('.topBarDailyPrice .title')).text().trim();
     return {
-        title: 'BTC/TRY',
-        message: rate
+        title: title,
+        message: rate + ' ₺'
     };
 })()
 ```
