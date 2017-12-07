@@ -22,6 +22,23 @@
 })()
 
 
+// Checks BTC/TRY or ETC/TRY exchange rate from btcturk.com
+(function () {
+    var responseText = $.ajax({
+        type: 'GET',
+        url: 'https://www.btcturk.com/',
+        async: false
+    }).responseText;
+    var $parsedResponse = $($.parseHTML(responseText));
+    var rate = $($parsedResponse.find('.topBarDailyPrice .askPrice')).text().trim();
+    var title = $($parsedResponse.find('.topBarDailyPrice .title')).text().trim();
+    return {
+        title: title,
+        message: rate + ' ₺'
+    };
+})()
+
+
 // Check health of your website or service
 (function () {
     var response = $.ajax({
