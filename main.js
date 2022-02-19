@@ -97,7 +97,7 @@ function executeAlarm(alarmName) {
 }
 
 function executeAlarmWithOptions(alarmOptions, alarmName) {
-    if (alarmOptions && alarmOptions.activated) {
+    if (alarmOptions && alarmOptions.script) {
         const result = eval(alarmOptions.script);
 
         if (result !== undefined) {
