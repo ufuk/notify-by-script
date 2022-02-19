@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Notify by Script - Options</title>
     <style>
@@ -37,7 +37,7 @@
     <label>Period (in minutes):</label>
 </div>
 <div class="fullWidth">
-    <input type="number" name="period" style="width: 15%; text-align: right;"/>
+    <input name="period" style="width: 15%; text-align: right;" type="number"/>
 </div>
 
 <div class="fullWidth">
@@ -47,14 +47,14 @@
     </label>
 </div>
 <div class="fullWidth">
-    <textarea id="editor" name="script" class="fullWidth"
-              rows="10" style="resize: none" wrap="off"
-              spellcheck="false"></textarea>
+    <textarea class="fullWidth" id="editor" name="script"
+              rows="10" spellcheck="false" style="resize: none"
+              wrap="off"></textarea>
 </div>
 
 <div class="fullWidth">
     <label>
-        <input type="checkbox" name="activated">
+        <input name="activated" type="checkbox">
         Notification activated?
     </label>
 </div>

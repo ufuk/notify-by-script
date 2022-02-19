@@ -2,7 +2,8 @@
 
 Google Chrome Browser extension for setting notifications that prepared by scripts.
 
-Now available on [Chrome Web Store](https://chrome.google.com/webstore/detail/notify-by-script/idgiodaooapkmmipoahlcmggofokcilg)
+Now available
+on [Chrome Web Store](https://chrome.google.com/webstore/detail/notify-by-script/idgiodaooapkmmipoahlcmggofokcilg)
 
 ![options-page](https://raw.githubusercontent.com/ufuk/notify-by-script/master/document-assets/options-page.png)
 
@@ -85,8 +86,8 @@ You should drink at least 2 litres water everyday. So, make Notify by Script to 
 
 ### Preparing notification content
 
-Notify by Script waits in hope a script that results with a JSON object which contains two fields: `title` and `message`.
-These values will be used for creating notifications for you.
+Notify by Script waits in hope a script that results with a JSON object which contains two fields: `title` and `message`
+. These values will be used for creating notifications for you.
 
 ```
 (function () {
@@ -101,8 +102,9 @@ These values will be used for creating notifications for you.
 
 ### Conditional notification
 
-Return something `undefined` or "nothing" if you don't want to display notification for that cycle.
-For example, in health check use case, when you want to display notification if only status is not 200 (OK), return nothing id status is not 200 (OK): 
+Return something `undefined` or "nothing" if you don't want to display notification for that cycle. For example, in
+health check use case, when you want to display notification if only status is not 200 (OK), return nothing id status is
+not 200 (OK):
 
 ```
 (function () {

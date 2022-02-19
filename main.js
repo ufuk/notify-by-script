@@ -20,6 +20,7 @@ function createAlarm() {
         });
     });
 }
+
 createAlarm();
 
 // Configure what will happened when alarm triggered
@@ -34,9 +35,9 @@ function notify(alarmName, title, message) {
     chrome.notifications.getAll(function (notifications) {
         console.log("Current notification ids: " + JSON.stringify(notifications));
 
-        var notificationIds = Object.keys(notifications);
-        for (var i = 0; i < notificationIds.length; i++) {
-            var eachNotificationId = notificationIds[i];
+        const notificationIds = Object.keys(notifications);
+        for (let i = 0; i < notificationIds.length; i++) {
+            const eachNotificationId = notificationIds[i];
             if (eachNotificationId.startsWith(alarmName)) {
                 console.log("Notification already exists: " + eachNotificationId);
                 chrome.notifications.clear(eachNotificationId, function (wasCleared) {
@@ -49,7 +50,7 @@ function notify(alarmName, title, message) {
             }
         }
 
-        var notificationId = alarmName + "-" + new Date().getTime();
+        const notificationId = alarmName + "-" + new Date().getTime();
         chrome.notifications.create(notificationId, {
             "type": "basic",
             "title": title,
@@ -66,10 +67,10 @@ chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         console.log("Message received: " + request.message);
 
-        if (request.message == "newOptionsSaved") {
+        if (request.message === "newOptionsSaved") {
             createAlarm();
             sendResponse({message: "alarmsReCreated"});
-        } else if (request.message == "testScript") {
+        } else if (request.message === "testScript") {
             executeAlarmWithOptions(request.alarmOptions, "test-script");
             sendResponse({message: "scriptEvaluated"});
         }
@@ -97,9 +98,9 @@ function executeAlarm(alarmName) {
 
 function executeAlarmWithOptions(alarmOptions, alarmName) {
     if (alarmOptions && alarmOptions.activated) {
-        var result = eval(alarmOptions.script);
+        const result = eval(alarmOptions.script);
 
-        if (result != undefined) {
+        if (result !== undefined) {
             notify(alarmName, result.title, result.message);
         }
     }
