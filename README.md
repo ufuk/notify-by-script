@@ -15,7 +15,7 @@ You can create alarms and notifications about anything you need. Here is some ex
 
 Write a script to check your website/service is available or not.
 
-```
+```javascript
 // Check health of your website or service
 (function () {
     var response = $.ajax({
@@ -34,7 +34,7 @@ Write a script to check your website/service is available or not.
 
 For example checks some currency's exchange rate and notify:
 
-```
+```javascript
 // Checks USD/TRY exchange rate from doviz.com
 (function () {
     var responseText = $.ajax({
@@ -50,7 +50,7 @@ For example checks some currency's exchange rate and notify:
 })()
 ```
 
-```
+```javascript
 // Checks BTC/TRY or ETH/TRY exchange rate from btcturk.com
 (function () {
     var responseText = $.ajax({
@@ -72,7 +72,7 @@ For example checks some currency's exchange rate and notify:
 
 You should drink at least 2 litres water everyday. So, make Notify by Script to remind you while you surfing:
 
-```
+```javascript
 // Remind yourself to drink water
 (function () {
     return {
@@ -89,7 +89,7 @@ You should drink at least 2 litres water everyday. So, make Notify by Script to 
 Notify by Script waits in hope a script that results with a JSON object which contains two fields: `title` and `message`
 . These values will be used for creating notifications for you.
 
-```
+```javascript
 (function () {
     return {
         title: 'Hello World',
@@ -106,7 +106,7 @@ Return something `undefined` or "nothing" if you don't want to display notificat
 health check use case, when you want to display notification if only status is not 200 (OK), return nothing id status is
 not 200 (OK):
 
-```
+```javascript
 (function () {
     var response = $.ajax({
         type: 'GET',
