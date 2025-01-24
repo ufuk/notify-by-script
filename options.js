@@ -23,7 +23,7 @@ function saveOptions() {
         displayStatus(statusText);
 
         // Send message to refresh alarm
-        chrome.runtime.sendMessage({message: "newOptionsSaved"}, function (response) {
+        chrome.runtime.sendMessage({ message: "newOptionsSaved" }, function (response) {
             console.log(response.message);
         });
     });
@@ -58,8 +58,10 @@ function testScript() {
         message: "testScript",
         alarmOptions: alarmOptions
     }, function (response) {
-        console.log(response.message);
-        displayStatus("Script evaluated.");
+        if (response && response.message) {
+            console.log(response.message);
+            displayStatus("Script evaluated.");
+        }
     });
 }
 

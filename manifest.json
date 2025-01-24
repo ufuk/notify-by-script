@@ -1,33 +1,35 @@
 ﻿{
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Notify by Script",
   "description": "Extension for setting notifications that prepared by scripts.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Ufuk Uzun",
   "icons": {
     "128": "icon-128.png",
     "256": "icon.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "icon.png"
   },
   "background": {
-    "persistent": true,
-    "scripts": [
-      "main.js",
-      "jquery.min.js"
-    ]
+    "service_worker": "background.js"
   },
   "permissions": [
-    "http://*/*",
-    "https://*/*",
     "alarms",
     "notifications",
-    "storage"
+    "storage",
+    "offscreen"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
+    "page": "options.html"
+  },
+  "sandbox": {
+    "pages": [
+      "sandbox.html"
+    ]
   }
 }

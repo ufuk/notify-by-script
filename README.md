@@ -113,7 +113,7 @@ not 200 (OK):
         url: '<YOUR_WEBSITE_URL>',
         async: false
     });
-    
+
     if (response.status != 200) {
         return {
             title: 'Health Check',

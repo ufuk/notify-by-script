@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <title>Notify by Script - Options</title>
     <style>
@@ -32,40 +33,41 @@
 </head>
 
 <body>
-<h1>Set Alarm Options</h1>
-<div class="fullWidth">
-    <label>Period (in minutes):</label>
-</div>
-<div class="fullWidth">
-    <input name="period" style="width: 15%; text-align: right;" type="number"/>
-</div>
+    <h1>Set Alarm Options</h1>
+    <div class="fullWidth">
+        <label>Period (in minutes):</label>
+    </div>
+    <div class="fullWidth">
+        <input name="period" style="width: 15%; text-align: right;" type="number" />
+    </div>
 
-<div class="fullWidth">
-    <label>
-        Script (for example scripts
-        <a href="https://github.com/ufuk/notify-by-script/blob/master/example-scripts.js" target="_blank">click here</a>):
-    </label>
-</div>
-<div class="fullWidth">
-    <textarea class="fullWidth" id="editor" name="script"
-              rows="10" spellcheck="false" style="resize: none"
-              wrap="off"></textarea>
-</div>
+    <div class="fullWidth">
+        <label>
+            Script (for example scripts
+            <a href="https://github.com/ufuk/notify-by-script/blob/master/example-scripts.js" target="_blank">click
+                here</a>):
+        </label>
+    </div>
+    <div class="fullWidth">
+        <textarea class="fullWidth" id="editor" name="script" rows="10" spellcheck="false" style="resize: none"
+            wrap="off"></textarea>
+    </div>
 
-<div class="fullWidth">
-    <label>
-        <input name="activated" type="checkbox">
-        Notification activated?
-    </label>
-</div>
+    <div class="fullWidth">
+        <label>
+            <input name="activated" type="checkbox">
+            Notification activated?
+        </label>
+    </div>
 
-<div class="fullWidth">
-    <button id="save">Save</button>
-    <button id="testScript">Test Script</button>
-    <label id="statusLabel"></label>
-</div>
+    <div class="fullWidth">
+        <button id="save">Save</button>
+        <button id="testScript">Test Script</button>
+        <label id="statusLabel"></label>
+    </div>
 
-<script src="jquery.min.js"></script>
-<script src="options.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="options.js"></script>
 </body>
+
 </html>
