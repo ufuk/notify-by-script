@@ -9,8 +9,6 @@
 
 ---
 
-## Overview
-
 **Notify by Script** allows you to schedule background alarms in Chrome and evaluate custom JavaScript functions to
 generate desktop notifications. It runs user scripts securely inside a sandboxed iframe adhering to Chrome Manifest V3
 Content Security Policy (CSP).
@@ -39,18 +37,18 @@ Check if your website or API endpoint is responsive:
 
 ```javascript
 (async function () {
-  try {
-    const response = await fetch("https://your-website.com/api/health");
-    return {
-      title: "Health Check",
-      message: "Service is UP (Status: " + response.status + ")"
-    };
-  } catch (err) {
-    return {
-      title: "Health Check ALERT",
-      message: "Service DOWN: " + err.message
-    };
-  }
+    try {
+        const response = await fetch("https://your-website.com/api/health");
+        return {
+            title: "Health Check",
+            message: "Service is UP (Status: " + response.status + ")"
+        };
+    } catch (err) {
+        return {
+            title: "Health Check ALERT",
+            message: "Service DOWN: " + err.message
+        };
+    }
 })();
 ```
 
@@ -62,21 +60,21 @@ Only show a notification when something goes wrong:
 
 ```javascript
 (async function () {
-  try {
-    const response = await fetch("https://your-website.com");
-    if (response.status !== 200) {
-      return {
-        title: "Website Alert",
-        message: "Unexpected status code: " + response.status
-      };
+    try {
+        const response = await fetch("https://your-website.com");
+        if (response.status !== 200) {
+            return {
+                title: "Website Alert",
+                message: "Unexpected status code: " + response.status
+            };
+        }
+    } catch (err) {
+        return {
+            title: "Website Down Alert",
+            message: "Could not reach server: " + err.message
+        };
     }
-  } catch (err) {
-    return {
-      title: "Website Down Alert",
-      message: "Could not reach server: " + err.message
-    };
-  }
-  // Returning nothing skips displaying a notification for this cycle
+    // Returning nothing skips displaying a notification for this cycle
 })();
 ```
 
@@ -88,20 +86,20 @@ Query a public REST API (e.g., CoinGecko) to get live prices:
 
 ```javascript
 (async function () {
-  try {
-    const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
-    const data = await res.json();
-    const price = data?.bitcoin?.usd;
-    return {
-      title: "BTC / USD Price",
-      message: "Current Price: $" + (price ? price.toLocaleString() : "N/A")
-    };
-  } catch (err) {
-    return {
-      title: "Crypto Tracker Error",
-      message: "Fetch failed: " + err.message
-    };
-  }
+    try {
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+        const data = await res.json();
+        const price = data?.bitcoin?.usd;
+        return {
+            title: "BTC / USD Price",
+            message: "Current Price: $" + (price ? price.toLocaleString() : "N/A")
+        };
+    } catch (err) {
+        return {
+            title: "Crypto Tracker Error",
+            message: "Fetch failed: " + err.message
+        };
+    }
 })();
 ```
 
@@ -113,15 +111,15 @@ Remind yourself to take a break and drink water while working:
 
 ```javascript
 (function () {
-  const reminders = [
-    "Time for a quick stretch and a glass of water! 💧",
-    "Stay hydrated! Your brain works better with water. 🥤",
-    "Take a deep breath and drink some water! 🌊"
-  ];
-  return {
-    title: "Hydration Reminder",
-    message: reminders[Math.floor(Math.random() * reminders.length)]
-  };
+    const reminders = [
+        "Time for a quick stretch and a glass of water! 💧",
+        "Stay hydrated! Your brain works better with water. 🥤",
+        "Take a deep breath and drink some water! 🌊"
+    ];
+    return {
+        title: "Hydration Reminder",
+        message: reminders[Math.floor(Math.random() * reminders.length)]
+    };
 })();
 ```
 

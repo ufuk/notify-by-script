@@ -17,7 +17,7 @@ Dashboard.
 - **Extension Name:** `Notify by Script`
 - **Short Description:**
   `Create scheduled alarms and custom desktop notifications powered by your own JavaScript snippets.` (97 chars, max
-  132)
+    132)
 - **Detailed Description:** See [description-en.txt](description-en.txt)
 
 ### Turkish
