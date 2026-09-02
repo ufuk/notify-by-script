@@ -1,0 +1,22 @@
+Notify by Script is a developer-friendly Google Chrome extension that lets you create scheduled background alarms and custom desktop notifications powered by your own JavaScript snippets.
+
+Whether you want to monitor your server status, track crypto prices via public APIs, receive periodic reminders, or conditionally alert yourself when an API returns an error, Notify by Script makes it effortless.
+
+Key Features:
+• Custom JavaScript Execution: Write plain JavaScript or modern async/await scripts with fetch() support.
+• Flexible Scheduling: Set background execution intervals from 1 minute to 24 hours using Chrome Alarms.
+• Smart Conditional Alerts: Return { title, message } to show a notification, or return undefined/null to silently skip notifications when conditions aren't met.
+• Live Simulation & Testing: Test your scripts instantly with the built-in simulation preview and execution log console.
+• Pre-built Templates: 1-click templates for Website Health Checks, Crypto Trackers, Hydration Reminders, and Conditional Alerts.
+• Multi-Language Support: Fully localized in English and Turkish.
+• Privacy-Focused: Your scripts and configuration stay in your browser. No external tracking or telemetry.
+
+How to Use It:
+1. Click the extension icon or open Options.
+2. Choose a preset template or write your custom JavaScript function.
+3. Your function should return an object with { title: "...", message: "..." } (or undefined to skip).
+4. Set the interval (in minutes) and toggle "Activate".
+5. Click "Test Script" to preview the notification, then click "Save Settings".
+
+Open-source project on GitHub:
+https://github.com/ufuk/notify-by-script

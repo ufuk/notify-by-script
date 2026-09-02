@@ -1,0 +1,150 @@
+{
+  "appName": {
+    "message": "Notify by Script - Betikle Bildirim",
+    "description": "The name of the extension in Turkish"
+  },
+  "appShortName": {
+    "message": "Notify by Script",
+    "description": "Short name for the extension"
+  },
+  "appDescription": {
+    "message": "Kendi yazdığınız JavaScript kodlarıyla periyodik alarmlar ve masaüstü bildirimleri oluşturun.",
+    "description": "Description of what the extension does in Turkish"
+  },
+  "actionTitle": {
+    "message": "Notify by Script'i Şimdi Çalıştır",
+    "description": "Tooltip for the extension browser action icon"
+  },
+  "optionsTitle": {
+    "message": "Notify by Script - Ayarlar",
+    "description": "Title of the options page in Turkish"
+  },
+  "headerBadge": {
+    "message": "Otomasyon & Zamanlayıcı",
+    "description": "Header badge on the options page"
+  },
+  "headerTitle": {
+    "message": "Alarm ve Betik Ayarları",
+    "description": "Main title on the options page"
+  },
+  "headerSubtitle": {
+    "message": "API'leri denetlemek, web sitelerini takip etmek veya periyodik hatırlatıcılar oluşturmak için JavaScript yazın.",
+    "description": "Subtitle below the header"
+  },
+  "scheduleSectionTitle": {
+    "message": "Zamanlama ve Tetikleyici",
+    "description": "Schedule settings section title"
+  },
+  "periodLabel": {
+    "message": "Çalışma Aralığı (Dakika)",
+    "description": "Label for the alarm period input"
+  },
+  "periodHelp": {
+    "message": "Betiğin arka planda ne sıklıkla çalıştırılacağı (en az 1 dakika).",
+    "description": "Help text for period input"
+  },
+  "activeLabel": {
+    "message": "Zamanlanmış Bildirimleri Etkinleştir",
+    "description": "Label for the active toggle switch"
+  },
+  "activeHelp": {
+    "message": "Etkinleştirildiğinde, betiğiniz belirlenen aralıklarla arka planda otomatik çalışır.",
+    "description": "Help text for active toggle"
+  },
+  "scriptSectionTitle": {
+    "message": "Bildirim Betiği (JavaScript)",
+    "description": "Script editor section title"
+  },
+  "scriptHelp": {
+    "message": "{ title, message } formatında nesne döndürün (veya bildirimi atlamak için undefined). async/await ve fetch() desteklenir!",
+    "description": "Help text for script editor"
+  },
+  "presetsLabel": {
+    "message": "Hazır Şablonlar / Örnekler",
+    "description": "Label for the presets dropdown"
+  },
+  "presetSelectPlaceholder": {
+    "message": "-- Örnek Bir Betik Yükleyin --",
+    "description": "Placeholder option in preset dropdown"
+  },
+  "presetHelloWorld": {
+    "message": "Basit Bildirim (Merhaba Dünya)",
+    "description": "Preset name for hello world"
+  },
+  "presetHealthCheck": {
+    "message": "Web Sitesi Durum / Sağlık Kontrolü (async/fetch)",
+    "description": "Preset name for website health check"
+  },
+  "presetCrypto": {
+    "message": "API / Kripto Fiyat Takibi (async/fetch)",
+    "description": "Preset name for crypto tracker"
+  },
+  "presetWater": {
+    "message": "Su İçme Hatırlatıcısı",
+    "description": "Preset name for water reminder"
+  },
+  "presetConditional": {
+    "message": "Koşullu Bildirim (Sadece belirli durumda)",
+    "description": "Preset name for conditional notification"
+  },
+  "btnSave": {
+    "message": "Ayarları Kaydet",
+    "description": "Save button text"
+  },
+  "btnTest": {
+    "message": "Betiği Test Et",
+    "description": "Test button text"
+  },
+  "btnCopy": {
+    "message": "Kodu Kopyala",
+    "description": "Copy script button"
+  },
+  "btnReset": {
+    "message": "Varsayılana Sıfırla",
+    "description": "Reset script button"
+  },
+  "statusSaved": {
+    "message": "Ayarlar başarıyla kaydedildi!",
+    "description": "Toast message when saved"
+  },
+  "statusTesting": {
+    "message": "Betik çalıştırılıyor...",
+    "description": "Status text while evaluating"
+  },
+  "statusTestSuccess": {
+    "message": "Betik başarıyla çalıştırıldı!",
+    "description": "Status text when evaluation succeeds"
+  },
+  "statusTestError": {
+    "message": "Betik çalıştırma hatası",
+    "description": "Status text when evaluation fails"
+  },
+  "statusNoNotification": {
+    "message": "Betik sorunsuz çalıştı ancak undefined/null döndü (bildirim üretilmedi).",
+    "description": "Status when script returns no notification"
+  },
+  "previewSectionTitle": {
+    "message": "Canlı Önizleme ve Test Çıktısı",
+    "description": "Title for the test results and preview section"
+  },
+  "previewNotificationHeader": {
+    "message": "Bildirim Simülasyonu",
+    "description": "Header for the notification simulation box"
+  },
+  "previewWaiting": {
+    "message": "Betiği çalıştırmak ve bildirim çıktısını burada görmek için yukarıdaki \"Betiği Test Et\" butonuna tıklayın.",
+    "description": "Waiting message in preview container"
+  },
+  "outputConsoleHeader": {
+    "message": "Çalıştırma Çıktısı / Konsol",
+    "description": "Header for the output console"
+  },
+  "githubLinkText": {
+    "message": "GitHub Deposu ve Örnek Betikler",
+    "description": "Link to GitHub repo"
+  },
+  "copiedToast": {
+    "message": "Panoya kopyalandı!",
+    "description": "Toast message after copying code"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "appName": {
+    "message": "Notify by Script",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "Notify by Script",
+    "description": "Short name for the extension"
+  },
+  "appDescription": {
+    "message": "Create scheduled alarms and custom desktop notifications powered by your own JavaScript snippets.",
+    "description": "Description of what the extension does"
+  },
+  "actionTitle": {
+    "message": "Run Notify by Script Now",
+    "description": "Tooltip for the extension browser action icon"
+  },
+  "optionsTitle": {
+    "message": "Notify by Script - Settings",
+    "description": "Title of the options page"
+  },
+  "headerBadge": {
+    "message": "Automation & Scheduling",
+    "description": "Header badge on the options page"
+  },
+  "headerTitle": {
+    "message": "Alarm & Script Settings",
+    "description": "Main title on the options page"
+  },
+  "headerSubtitle": {
+    "message": "Write custom JavaScript to inspect APIs, check websites, or generate periodic desktop reminders.",
+    "description": "Subtitle below the header"
+  },
+  "scheduleSectionTitle": {
+    "message": "Schedule & Trigger",
+    "description": "Schedule settings section title"
+  },
+  "periodLabel": {
+    "message": "Interval (Minutes)",
+    "description": "Label for the alarm period input"
+  },
+  "periodHelp": {
+    "message": "How often the script runs in the background (minimum 1 minute).",
+    "description": "Help text for period input"
+  },
+  "activeLabel": {
+    "message": "Activate Scheduled Notifications",
+    "description": "Label for the active toggle switch"
+  },
+  "activeHelp": {
+    "message": "When enabled, your script will run periodically in the background according to the interval above.",
+    "description": "Help text for active toggle"
+  },
+  "scriptSectionTitle": {
+    "message": "Notification Script",
+    "description": "Script editor section title"
+  },
+  "scriptHelp": {
+    "message": "Return an object with { title, message } (or undefined to skip). Supports async/await and fetch()!",
+    "description": "Help text for script editor"
+  },
+  "presetsLabel": {
+    "message": "Templates / Examples",
+    "description": "Label for the presets dropdown"
+  },
+  "presetSelectPlaceholder": {
+    "message": "-- Load an Example Script --",
+    "description": "Placeholder option in preset dropdown"
+  },
+  "presetHelloWorld": {
+    "message": "Simple Notification (Hello World)",
+    "description": "Preset name for hello world"
+  },
+  "presetHealthCheck": {
+    "message": "Website Health Check (async/fetch)",
+    "description": "Preset name for website health check"
+  },
+  "presetCrypto": {
+    "message": "API / Crypto Price Tracker (async/fetch)",
+    "description": "Preset name for crypto tracker"
+  },
+  "presetWater": {
+    "message": "Drink Water Reminder",
+    "description": "Preset name for water reminder"
+  },
+  "presetConditional": {
+    "message": "Conditional Notification (Only on specific status)",
+    "description": "Preset name for conditional notification"
+  },
+  "btnSave": {
+    "message": "Save Settings",
+    "description": "Save button text"
+  },
+  "btnTest": {
+    "message": "Test Script",
+    "description": "Test button text"
+  },
+  "btnCopy": {
+    "message": "Copy Script",
+    "description": "Copy script button"
+  },
+  "btnReset": {
+    "message": "Reset to Default",
+    "description": "Reset script button"
+  },
+  "statusSaved": {
+    "message": "Settings saved successfully!",
+    "description": "Toast message when saved"
+  },
+  "statusTesting": {
+    "message": "Evaluating script...",
+    "description": "Status text while evaluating"
+  },
+  "statusTestSuccess": {
+    "message": "Script evaluated successfully!",
+    "description": "Status text when evaluation succeeds"
+  },
+  "statusTestError": {
+    "message": "Script evaluation failed",
+    "description": "Status text when evaluation fails"
+  },
+  "statusNoNotification": {
+    "message": "Script executed cleanly but returned undefined/null (no notification produced).",
+    "description": "Status when script returns no notification"
+  },
+  "previewSectionTitle": {
+    "message": "Live Preview & Test Output",
+    "description": "Title for the test results and preview section"
+  },
+  "previewNotificationHeader": {
+    "message": "Simulated Notification",
+    "description": "Header for the notification simulation box"
+  },
+  "previewWaiting": {
+    "message": "Click \"Test Script\" above to run your script and preview the notification here.",
+    "description": "Waiting message in preview container"
+  },
+  "outputConsoleHeader": {
+    "message": "Execution Output / Logs",
+    "description": "Header for the output console"
+  },
+  "githubLinkText": {
+    "message": "View on GitHub & Example Scripts",
+    "description": "Link to GitHub repo"
+  },
+  "copiedToast": {
+    "message": "Copied to clipboard!",
+    "description": "Toast message after copying code"
+  }
+}

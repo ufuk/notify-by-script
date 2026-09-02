@@ -1,0 +1,22 @@
+Notify by Script, kendi yazdığınız JavaScript kod parçacıklarıyla zamanlanmış arka plan alarmları ve özel masaüstü bildirimleri oluşturmanızı sağlayan açık kaynaklı bir Chrome uzantısıdır.
+
+Web sitenizin veya API'nizin çalışır durumda olup olmadığını denetlemek, kripto para/döviz fiyatlarını takip etmek, su içme hatırlatıcıları kurmak ya da belirli koşullar sağlandığında anında masaüstü uyarısı almak için Notify by Script'i kullanabilirsiniz.
+
+Özellikler:
+• Özel JavaScript Desteği: Düz JavaScript veya fetch() ve async/await destekli modern betikler yazın.
+• Esnek Zamanlama: Chrome Alarms altyapısıyla 1 dakikadan 24 saate kadar dilediğiniz sıklıkta arka plan çalıştırması ayarlayın.
+• Akıllı Koşullu Bildirimler: Bildirim göstermek için { title, message } nesnesi döndürün; koşul sağlanmadığında undefined döndürerek bildirimi sessizce atlayın.
+• Canlı Simülasyon ve Test: Gelişmiş test konsolu ve anlık bildirim önizlemesiyle kodunuzu tek tıkla test edin.
+• Hazır Şablonlar: Web Sitesi Sağlık Kontrolü, Kripto Fiyat Takibi, Su Hatırlatıcı ve Koşullu Bildirim şablonlarını tek tıkla yükleyin.
+• Çok Dilli Kullanım: Türkçe ve İngilizce dil desteği.
+• Gizlilik Odaklı: Betikleriniz ve ayarlarınız yalnızca tarayıcınızda saklanır; dış sunuculara veri aktarılmaz.
+
+Nasıl Kullanılır?
+1. Uzantı simgesine tıklayın veya Ayarlar sayfasını açın.
+2. Hazır şablonlardan birini seçin ya da kendi JavaScript kodunuzu yazın.
+3. Fonksiyonunuzun { title: "...", message: "..." } formatında bir nesne döndürdüğünden emin olun.
+4. Çalışma aralığını (dakika) belirleyin ve "Etkinleştir" seçeneğini açın.
+5. "Betiği Test Et" butonuyla önizleyin ve ardından "Ayarları Kaydet"e tıklayın.
+
+Açık kaynaklı bu projeye katkıda bulunmak veya öneri bildirmek için:
+https://github.com/ufuk/notify-by-script

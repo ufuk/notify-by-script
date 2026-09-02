@@ -1,73 +1,758 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Notify by Script - Options</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title data-i18n="optionsTitle">Notify by Script - Settings</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
     <style>
+        :root {
+            --bg-page: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-header: rgba(15, 23, 42, 0.5);
+            --bg-input: #0b1120;
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-focus: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --primary-glow: rgba(59, 130, 246, 0.35);
+            --accent: #06b6d4;
+            --success: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.15);
+            --error: #ef4444;
+            --error-bg: rgba(239, 68, 68, 0.15);
+            --warning: #f59e0b;
+            --editor-bg: #070d19;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-code: 'Fira Code', 'DejaVu Sans Mono', Consolas, monospace;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.2s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            padding: 0 15px 15px;
+            font-family: var(--font-main);
+            background: radial-gradient(circle at 10% 20%, #1e1b4b 0%, #0f172a 60%, #020617 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2.5rem 1.5rem;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1 {
-            margin-top: 0;
-            padding-top: 0;
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
         }
 
-        div {
-            float: left;
-            padding-bottom: 10px;
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .fullWidth {
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            padding: 6px;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            object-fit: contain;
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-top: 0.25rem;
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 0.85rem;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            transition: var(--transition);
+        }
+
+        .github-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Cards & Layout */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #f1f5f9;
+        }
+
+        .card-title svg {
+            color: var(--accent);
+        }
+
+        /* Form elements */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 680px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-help {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .input-text,
+        .select-input {
             width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 0.65rem 0.85rem;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
         }
 
-        label {
-            font-weight: bold;
+        .input-text:focus,
+        .select-input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
         }
 
-        textarea {
-            font-family: 'DejaVu Sans Mono', monospace;
+        /* Switch Toggle */
+        .switch-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .switch-container:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .switch-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .switch-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background-color: #334155;
+            transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        /* Script Editor Card */
+        .editor-wrapper {
+            position: relative;
+            background: var(--editor-bg);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0.85rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--border-card);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .preset-select {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.825rem;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preset-select:hover {
+            border-color: var(--accent);
+        }
+
+        .toolbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-tool {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .btn-tool:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .code-textarea {
+            width: 100%;
+            height: 280px;
+            background: transparent;
+            color: #38bdf8;
+            border: none;
+            padding: 1rem;
+            font-family: var(--font-code);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            resize: vertical;
+            outline: none;
+            tab-size: 4;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        /* Action Bar */
+        .actions-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 14px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.06);
+            color: #f1f5f9;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Toast Status */
+        .status-badge {
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: all 0.3s ease;
+        }
+
+        .status-badge.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .status-badge.success {
+            background: var(--success-bg);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-badge.error {
+            background: var(--error-bg);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Preview and Logs */
+        .preview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .preview-box {
+            background: var(--bg-input);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            min-height: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .preview-box-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Simulated Chrome Desktop Notification */
+        .sim-notification {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.9rem 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sim-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            background: #1e293b;
+        }
+
+        .sim-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            overflow: hidden;
+        }
+
+        .sim-source {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .sim-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            word-break: break-word;
+        }
+
+        .sim-message {
+            font-size: 0.825rem;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+
+        .preview-empty {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1.5rem 0.5rem;
+        }
+
+        .log-console {
+            background: #050914;
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            padding: 0.85rem;
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: #94a3b8;
+            max-height: 160px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .log-error {
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .log-success {
+            color: #34d399;
         }
     </style>
 </head>
 
 <body>
-    <h1>Set Alarm Options</h1>
-    <div class="fullWidth">
-        <label>Period (in minutes):</label>
-    </div>
-    <div class="fullWidth">
-        <input name="period" style="width: 15%; text-align: right;" type="number" />
-    </div>
+<div class="container">
+    <!-- Header -->
+    <header class="app-header">
+        <div class="brand">
+            <img alt="Logo" class="brand-logo" src="icon-128.png">
+            <div>
+                <h1 class="brand-title" data-i18n="headerTitle">Alarm & Script Settings</h1>
+                <span class="brand-badge" data-i18n="headerBadge">Automation & Scheduling</span>
+            </div>
+        </div>
+        <div class="header-links">
+            <a class="github-link" href="https://github.com/ufuk/notify-by-script" rel="noopener noreferrer"
+               target="_blank">
+                <svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span data-i18n="githubLinkText">GitHub</span>
+            </a>
+        </div>
+    </header>
 
-    <div class="fullWidth">
-        <label>
-            Script (for example scripts
-            <a href="https://github.com/ufuk/notify-by-script/blob/master/example-scripts.js" target="_blank">click
-                here</a>):
-        </label>
-    </div>
-    <div class="fullWidth">
-        <textarea class="fullWidth" id="editor" name="script" rows="10" spellcheck="false" style="resize: none"
-            wrap="off"></textarea>
-    </div>
+    <!-- Main Form -->
+    <main>
+        <!-- Schedule Card -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span data-i18n="scheduleSectionTitle">Schedule & Trigger</span>
+                </h2>
+            </div>
 
-    <div class="fullWidth">
-        <label>
-            <input name="activated" type="checkbox">
-            Notification activated?
-        </label>
-    </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label" data-i18n="periodLabel" for="periodInput">Interval (Minutes)</label>
+                    <input class="input-text" id="periodInput" max="1440" min="1" placeholder="5" type="number">
+                    <span class="form-help" data-i18n="periodHelp">How often the script runs in the background.</span>
+                </div>
 
-    <div class="fullWidth">
-        <button id="save">Save</button>
-        <button id="testScript">Test Script</button>
-        <label id="statusLabel"></label>
-    </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="activeLabel">Activation</label>
+                    <label class="switch-container" for="activatedInput">
+                        <div class="switch-text">
+                            <span class="switch-title" data-i18n="activeLabel">Active Schedule</span>
+                            <span class="form-help" data-i18n="activeHelp">Enable background execution</span>
+                        </div>
+                        <div class="switch">
+                            <input id="activatedInput" type="checkbox">
+                            <span class="slider"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </section>
 
-    <script src="jquery.min.js"></script>
-    <script src="options.js"></script>
+        <!-- Script Editor Card -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                    <span data-i18n="scriptSectionTitle">Notification Script</span>
+                </h2>
+            </div>
+
+            <div class="editor-wrapper">
+                <div class="editor-toolbar">
+                    <div class="toolbar-left">
+                        <select class="preset-select" id="presetSelect">
+                            <option data-i18n="presetSelectPlaceholder" value="">-- Load an Example Script --</option>
+                            <option data-i18n="presetHelloWorld" value="helloWorld">Simple Notification (Hello World)
+                            </option>
+                            <option data-i18n="presetHealthCheck" value="healthCheck">Website Health Check
+                                (async/fetch)
+                            </option>
+                            <option data-i18n="presetCrypto" value="crypto">Crypto / Currency API (async/fetch)</option>
+                            <option data-i18n="presetWater" value="water">Drink Water Reminder</option>
+                            <option data-i18n="presetConditional" value="conditional">Conditional Notification</option>
+                        </select>
+                    </div>
+                    <div class="toolbar-actions">
+                        <button class="btn-tool" id="btnCopy" type="button">
+                            <svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                 width="14">
+                                <rect height="13" rx="2" ry="2" width="13" x="9" y="9"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span data-i18n="btnCopy">Copy</span>
+                        </button>
+                        <button class="btn-tool" id="btnReset" type="button">
+                            <svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                 width="14">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                            </svg>
+                            <span data-i18n="btnReset">Reset</span>
+                        </button>
+                    </div>
+                </div>
+                <textarea class="code-textarea" id="editor" spellcheck="false" wrap="off"></textarea>
+            </div>
+
+            <div class="actions-bar">
+                <div class="btn-group">
+                    <button class="btn-primary" id="btnSave" type="button">
+                        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                             width="18">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        <span data-i18n="btnSave">Save Settings</span>
+                    </button>
+                    <button class="btn-secondary" id="btnTest" type="button">
+                        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                             width="18">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        <span data-i18n="btnTest">Test Script</span>
+                    </button>
+                </div>
+                <div class="status-badge" id="statusLabel"></div>
+            </div>
+        </section>
+
+        <!-- Test Results & Preview Card -->
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <rect height="14" rx="2" ry="2" width="20" x="2" y="3"/>
+                        <line x1="8" x2="16" y1="21" y2="21"/>
+                        <line x1="12" x2="12" y1="17" y2="21"/>
+                    </svg>
+                    <span data-i18n="previewSectionTitle">Live Preview & Test Output</span>
+                </h2>
+            </div>
+
+            <div class="preview-grid">
+                <div class="preview-box">
+                    <div class="preview-box-title" data-i18n="previewNotificationHeader">Simulated Notification</div>
+                    <div id="simNotificationContainer">
+                        <div class="preview-empty" data-i18n="previewWaiting">
+                            Click "Test Script" above to run your script and preview the notification here.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-box">
+                    <div class="preview-box-title" data-i18n="outputConsoleHeader">Execution Output / Logs</div>
+                    <div class="log-console" id="logConsole">// Ready. Click "Test Script" to inspect output.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="options.js"></script>
 </body>
 
 </html>
